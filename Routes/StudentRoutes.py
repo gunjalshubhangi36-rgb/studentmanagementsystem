@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from Controller.StudentController import CreateStudent 
 from Model.StudentModel import StudentStruct
 from Model.studentupdate import updateStruct
 from DataBase.dbconnection import collection
@@ -13,15 +12,14 @@ def CreateStudent(student:StudentStruct):
     sroll = student.roll
     sname = student.name
     sage = student.age
-    smail = student.mail
+    semail = student.email
 
 
     sinfo = {
-
         "roll" : sroll,
         "name" : sname,
         "age" : sage,
-        "mail": smail
+        "email": semail
     }
 
     collection.insert_one(sinfo)
@@ -50,8 +48,8 @@ def UpdateStudent(roll:int,student:updateStruct):
             if student.age != None:
                 updatedstudent["age"] = student.age
 
-            if student.mail != None:
-                updatedstudent["mail"] = student.mail
+            if student.email != None:
+                updatedstudent["mail"] = student.email
 
             collection.update_one(
                 {"roll":roll},
