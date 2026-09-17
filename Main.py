@@ -4,8 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app  = FastAPI()
 
-app.include_router(router)
-
 app.add_middleware(
 CORSMiddleware,
 allow_credentials=True,
@@ -13,6 +11,9 @@ allow_headers=["*"],
 allow_methods=["*"],
 allow_origin=["*"]
 )
+
+app.include_router(router)
+
 
 @app.get("/")
 def greet():
