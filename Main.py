@@ -9,7 +9,7 @@ CORSMiddleware,
 allow_credentials=True,
 allow_headers=["*"],
 allow_methods=["*"],
-allow_origin=["*"]
+allow_origins=["*"]
 )
 
 app.include_router(router)
